@@ -1,4 +1,4 @@
-[200~node('built-in') 
+node('built-in') 
 {
     stage('Continuous Download') 
         {
@@ -10,12 +10,12 @@
 			        }
 				    stage('Continuous Deployment') 
 				        {
-					    deploy adapters: [tomcat9(credentialsId: '2f1aac6a-dcd6-4143-8f2c-54ca51a37106', path: '', url: 'http://172.31.33.176:8080')], contextPath: 'testapp', war: '**/*.war'
+					    deploy adapters: [tomcat9(credentialsId: '2f1aac6a-dcd6-4143-8f2c-54ca51a37106', path: '', url: 'http://172.31.33.176:8080')], contextPath: 'jushapp', war: '**/*.war'
 					        }
 						    stage('Continuous Testing') 
 						        {
 							    git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-							        sh 'java -jar /home/ubuntu/.jenkins/workspace/Scriptedpipelinegit/testing.jar'
+							        sh 'java -jar /home/ubuntu/.jenkins/workspace/scriptedpipeline2/testing.jar'
 								    }
 								        stage('Continuous Delivery') 
 									    {
