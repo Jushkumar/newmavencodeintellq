@@ -12,13 +12,13 @@ node('built-in')
 	{
 	deploy adapters: [tomcat9(credentialsId: '2f1aac6a-dcd6-4143-8f2c-54ca51a37106', path: '', url: 'http://172.31.33.176:8080')], contextPath: 'jushapp', war: '**/*.war'
 	}
-	    stage('Continuous Testing') 
-						        {
-							    git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-							        sh 'java -jar /home/ubuntu/.jenkins/workspace/scriptedpipeline2/testing.jar'
-								    }
-								        stage('Continuous Delivery') 
-									    {
-									        deploy adapters: [tomcat9(credentialsId: '2f1aac6a-dcd6-4143-8f2c-54ca51a37106', path: '', url: 'http://172.31.35.193:8080')], contextPath: 'prodapp', war: '**/*.war'
-										    }
-										    }
+	stage('Continuous Testing') 
+	{
+	git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
+	sh 'java -jar /home/ubuntu/.jenkins/workspace/scriptedpipeline2/testing.jar'
+	}
+	stage('Continuous Delivery') 
+	{
+	deploy adapters: [tomcat9(credentialsId: '2f1aac6a-dcd6-4143-8f2c-54ca51a37106', path: '', url: 'http://172.31.35.193:8080')], contextPath: 'prodapp', war: '**/*.war'
+	}
+}
